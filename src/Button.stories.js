@@ -1,28 +1,23 @@
 import React from "react";
+import { inlineInfo } from "./utils";
 
 import { storiesOf } from "@storybook/react";
-import { text, color } from "@storybook/addon-knobs/react";
 import { Button } from "./Button";
-import { inlineInfo } from "./utils";
+import { text, boolean } from "@storybook/addon-knobs/react";
 
 storiesOf("Button", module)
   .addWithJSX(
     "with background",
     inlineInfo(`
-    description 
-    
-    ~~~js
-    <Button>asdasd</Button>
-    ~~~`)(() => <Button bg={text("bg", "green")}>Hello world</Button>)
+      description
+      
+      ~~~js
+      <Button>slkdjslkdj</Button>
+      ~~~
+      `)(() => <Button bg="palegoldenrod">Hello world</Button>)
   )
-  .addWithJSX(
-    "with background 2",
-    inlineInfo(`
-    description 
-    
-    ~~~js
-    <Button>asdasd</Button>
-    ~~~`)(() => (
-      <Button bg={color("bg", "purple", "group1")}>Hello world2</Button>
-    ))
-  );
+  .addWithJSX("with background 2", () => (
+    <Button disabled={boolean("disabled", false)}>
+      {text("text", "Hello world")}
+    </Button>
+  ));
