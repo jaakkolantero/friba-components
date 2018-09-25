@@ -11,6 +11,7 @@ storiesOf("<Selector>", module).addWithJSX(
       `)(() => (
     <Selector
       value="3"
+      title="Player 1"
       onDecrement={action("decrement")}
       onIncrement={action("increment")}
     />

@@ -8,7 +8,12 @@ test("<Selector>", () => {
   const onIncrement = jest.fn();
   const onDecrement = jest.fn();
   const { debug, getByTestId } = render(
-    <Selector value="3" onDecrement={onDecrement} onIncrement={onIncrement} />
+    <Selector
+      title="player1"
+      value="3"
+      onDecrement={onDecrement}
+      onIncrement={onIncrement}
+    />
   );
   debug();
   fireEvent.click(getByTestId("decrement-selector"));
@@ -20,4 +25,5 @@ test("<Selector>", () => {
   fireEvent.click(getByTestId("increment-selector"));
   expect(onIncrement).toHaveBeenCalledTimes(2);
   expect(getByTestId("value-selector").textContent).toBe("3");
+  expect(getByTestId("title-selector").textContent).toBe("player1");
 });

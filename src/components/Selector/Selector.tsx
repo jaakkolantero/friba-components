@@ -10,6 +10,7 @@ import {
 
 export interface ISelectorProps extends WithStyles<typeof styles> {
   value: string;
+  title: string;
   onDecrement?: () => void;
   onIncrement?: () => void;
 }
@@ -21,7 +22,7 @@ const styles = (theme: Theme) =>
     button: {
       margin: theme.spacing.unit
     },
-    value: {
+    typography: {
       display: "inline-block",
       margin: theme.spacing.unit
     },
@@ -38,9 +39,16 @@ const styles = (theme: Theme) =>
 
 class Selector extends React.Component<ISelectorProps, ISelectorState> {
   public render() {
-    const { classes, value, onDecrement, onIncrement } = this.props;
+    const { classes, value, title, onDecrement, onIncrement } = this.props;
     return (
       <React.Fragment>
+        <Typography
+          data-testid="title-selector"
+          variant="title"
+          className={classes.typography}
+        >
+          {title}
+        </Typography>
         <Button
           data-testid="decrement-selector"
           variant="contained"
@@ -53,7 +61,7 @@ class Selector extends React.Component<ISelectorProps, ISelectorState> {
         <Typography
           data-testid="value-selector"
           variant="title"
-          className={classes.value}
+          className={classes.typography}
         >
           {value}
         </Typography>
