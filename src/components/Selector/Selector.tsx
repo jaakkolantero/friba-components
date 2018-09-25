@@ -1,13 +1,74 @@
-import * as React from 'react';
+import * as React from "react";
+import {
+  Button,
+  withStyles,
+  createStyles,
+  WithStyles,
+  Theme,
+  Typography
+} from "@material-ui/core";
 
-interface ISelectorProps { }
+export interface ISelectorProps extends WithStyles<typeof styles> {
+  value: string;
+  onDecrement?: () => void;
+  onIncrement?: () => void;
+}
 
-interface ISelectorState { }
+export interface ISelectorState {}
 
-export default class Selector extends React.PureComponent<ISelectorProps, ISelectorState> {
+const styles = (theme: Theme) =>
+  createStyles({
+    button: {
+      margin: theme.spacing.unit
+    },
+    value: {
+      display: "inline-block",
+      margin: theme.spacing.unit
+    },
+    noHoverButton: {
+      extend: "button",
+      "&:hover": {
+        background: "none"
+      }
+    },
+    input: {
+      margin: theme.spacing.unit
+    }
+  });
+
+class Selector extends React.Component<ISelectorProps, ISelectorState> {
   public render() {
+    const { classes, value, onDecrement, onIncrement } = this.props;
     return (
-      <span>Body</span>
+      <React.Fragment>
+        <Button
+          data-testid="decrement-selector"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={onDecrement}
+        >
+          -
+        </Button>
+        <Typography
+          data-testid="value-selector"
+          variant="title"
+          className={classes.value}
+        >
+          {value}
+        </Typography>
+        <Button
+          data-testid="increment-selector"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={onIncrement}
+        >
+          +
+        </Button>
+      </React.Fragment>
     );
   }
 }
+
+export default withStyles(styles)(Selector);
