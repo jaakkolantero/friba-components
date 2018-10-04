@@ -22,6 +22,7 @@
     "@storybook/addons": "^4.0.0-alpha.22",
     "@storybook/react": "^4.0.0-alpha.14",
     "@types/jest": "^23.3.2",
+    "@types/lodash": "^4.14.116",
     "@types/react": "^16.4.14",
     "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^6.26.3",
@@ -34,11 +35,14 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.1.1",
+    "@material-ui/icons": "^3.0.1",
+    "downshift": "^2.2.2",
+    "lodash": "^4.17.11",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006 -c .storybook",
-    "test": "jest --watchAll"
+    "test": "jest --watch"
   }
 }

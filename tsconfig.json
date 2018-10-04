@@ -21,6 +21,11 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/components/Autocomplete/Autocomplete.stories.js",
+    "src/mockData/autocompleteValues.ts"
+  ],
   "exclude": ["node_modules", "build", "scripts"]
 }
